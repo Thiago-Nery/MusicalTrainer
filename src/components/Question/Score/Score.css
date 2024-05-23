@@ -1,0 +1,26 @@
+.Score {
+    margin-bottom: 50px;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.question-title {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.question-number {
+    flex: 1;
+    text-align: center;
+}
+
+.score-points {
+    display: flex;
+}
+
+.score-number {
+    flex: 1;
+    text-align: center;
+} 

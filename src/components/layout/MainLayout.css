@@ -1,0 +1,26 @@
+.Header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.Content {
+    grid-area: content;
+    padding: 10px;
+    background-color: #f2f5f0;
+}
+
+.Footer {
+    grid-area: footer;
+    padding: 10px;
+}
+
+.Layout {
+    display: grid;
+    grid-template-rows: 10vh 82vh 8vh ;
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer";
+}
