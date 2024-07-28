@@ -4,7 +4,7 @@ import NotFound from '../pages/NotFound/NotFound';
 import Scales from '../pages/Scales/Scales';
 import HarmonicFields from '../pages/HarmonicFields/HarmonicFields';
 import RelativeChords from '../pages/RelativeChords/RelativeChords';
-
+import CircleOfFifthsFourths from '../pages/CircleOfFifthsFourths/CircleOfFifthsFourths'
 
 export const appRouter = createBrowserRouter([
   {
@@ -15,14 +15,18 @@ export const appRouter = createBrowserRouter([
       {
         path: "scales",
         element: <Scales />
-      },
-      {
+      }, 
+      { 
         path: "harmonicField",
         element: <HarmonicFields/>
       },
       {
         path: "relativeChords",
         element: <RelativeChords/>
+      },
+      {
+        path: "circleOfFifthsFourths",
+        element: <CircleOfFifthsFourths/>
       }
     ],
   },

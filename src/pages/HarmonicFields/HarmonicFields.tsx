@@ -6,12 +6,13 @@ export default function HarmonicFields() {
   const generateQuestion = () => {
     const generatedHarmonicField = HarmonicFieldsService.getRandomHarmonicField();
     const {keyNote, harmonicField} = generatedHarmonicField;
-    const harmonicFieldType = generatedHarmonicField.harmonicFieldType == "major" ? "maior" : "menor" 
+    const harmonicFieldType = generatedHarmonicField.harmonicFieldType == "major" ? "maior" : "menor"; 
     const correctAnswer = harmonicField;
     const generatedQuestion: question = {
       title: `Qual é o campo harmônico de ${keyNote} ${harmonicFieldType}?`,
       correctAnswer: correctAnswer
-    }
+      // TODO: verificar a necessidade de keynote + tipo
+    };
 
     return generatedQuestion;
   }

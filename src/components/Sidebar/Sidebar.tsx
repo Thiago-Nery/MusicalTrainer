@@ -77,8 +77,8 @@ export default function Sidebar({isDrawerOpen, handleDrawer}: SidebarProps){
       },
       {
         label: "Círculo de Quintas / Quartas",
-        key: "circle",
-        onClick: () => handleNavigate("/"),
+        key: "circleOfFifthsFourths",
+        onClick: () => handleNavigate("/circleOfFifthsFourths"),
       },
     ];
     
