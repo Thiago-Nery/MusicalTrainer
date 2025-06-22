@@ -1,12 +1,12 @@
 import { api } from "../../data/api";
 
 const getFifthOrFourth = (type?: string) =>{ 
-    const { harmonicField, key } = api.getRandomHarmonicField(type) 
+    const { scale, key } = api.getRandomScale(type) 
     const fourthFifthDegree = [{
-        note: harmonicField[3],
+        note: scale[3],
         degreeName: "fourth"
     },{
-        note: harmonicField[4],
+        note: scale[4],
         degreeName: "fifth"
     }]
     const randomDegree = fourthFifthDegree[Math.floor(Math.random() * fourthFifthDegree.length)]
