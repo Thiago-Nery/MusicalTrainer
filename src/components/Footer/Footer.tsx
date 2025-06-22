@@ -19,7 +19,7 @@ export default function Footer(){
         <Paragraph className="paragraph">
           Criado por:
           <Popover content={content}>
-            <a> Thiago Nery</a>
+            <a> Thiago Nery Fabricio </a>
           </Popover>
         </Paragraph>
       </div>
