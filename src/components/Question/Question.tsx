@@ -12,6 +12,7 @@ interface QuestionProps {
 
 export default function QuestionTeste({ generateQuestion }: QuestionProps) {
   const [questionTitle, setQuestionTitle] = useState("")
+  const [questionImage, setQuestionImage] = useState("")
   const [wrongCounter, setWrongCounter] = useState(0);
   const [correctCounter, setCorrectCounter] = useState(0);
   const [questionCounter, setQuestionCounter] = useState(1);
@@ -54,6 +55,9 @@ export default function QuestionTeste({ generateQuestion }: QuestionProps) {
     const generatedQuestion = generateQuestion();
     setQuestionTitle(generatedQuestion.title)
     setCorrectAnswer(generatedQuestion.correctAnswer)
+    if(generatedQuestion.questionImage){
+      setQuestionImage(generatedQuestion.questionImage)
+    }
   }, [questionCounter])
 
   return (
@@ -73,7 +77,7 @@ export default function QuestionTeste({ generateQuestion }: QuestionProps) {
             correctCounter={correctCounter}
             wrongCounter={wrongCounter}
           />
-          <QuestionForm questionTitle={questionTitle} onFinish={onFinish} />
+          <QuestionForm questionTitle={questionTitle} onFinish={onFinish} questionImage={questionImage}/>
         </>
       )}
     </>
