@@ -42,6 +42,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "circleOfFifthsFourths",
         element: <CircleOfFifthsFourths/>
+      },
+      {
+        path: "circleOfFifthsFourths",
+        element: <CircleOfFifthsFourths/>
       }
     ],
   },
