@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { 
+  allNotes,
   randomNoteOptions,
   sharpNotes,
   flatNotes,
@@ -8,8 +9,15 @@ import {
   scalesSemitones,
   scaleOptions,
   scaleTypeOptions,
-  harmonicFields 
+  harmonicFields
 } from './db';
+import { staffImages } from './Staff/staffMappedImages';
+
+function getRandomNote(){
+  const randomNote = Math.floor(Math.random() * randomNoteOptions.length)
+
+  return randomNote
+}
 
 function getScale(note: string, scale: number[]){
   let notes = []
@@ -111,11 +119,110 @@ const getMinorScale = (note: string) => getScale(note, scalesSemitones.minor)
 const getMajorHarmonicField = (note: string) => getHarmonicField(getMajorScale(note), harmonicFields.major) 
 const getMinorHarmonicField = (note: string) => getHarmonicField(getMinorScale(note), harmonicFields.minor) 
 
+// Segunda <-> Sétima
+// Terça <-> Sexta
+// Quarta <-> Quinta
+// Justo <-> Justo (ex: quarta justa, quinta justa)
+// Maior <-> Menor
+// Aumentado <-> Diminuto 
+
+function getElementAt(index: number, arr: any[]){
+  let inRangeIndex = index % arr.length
+  return arr[inRangeIndex]
+}
+
+function getNewArrayFromElement(element: any, arr: any[]){
+    const elementIndex = arr.indexOf(element)
+    let newArray = []
+
+    let i
+    for(i=0; i < arr.length; i++){
+      let newElement = getElementAt(elementIndex + i, arr)
+      newArray.push(newElement)
+    }
+
+    return newArray
+    
+}
+
+function getRandomInterval(){
+  const flatOrSharpScale = Math.floor(Math.random() * 2) == 0 ? flatNotes : sharpNotes;
+
+  const randomTonicNote = flatOrSharpScale[0];
+  
+  const randomDegreeNoteIndex = Math.floor(Math.random() * flatOrSharpScale.length) + 1;  
+  const randomDegreeNote = flatOrSharpScale[randomDegreeNoteIndex];
+
+  const interval = randomDegreeNoteIndex / 2
+
+  let classification = ""
+
+  if(interval == 0.5 || interval == 1){
+    classification += "Segunda"
+  }
+  else if(interval == 1.5 || interval == 2){
+    classification += "Terça"
+  }
+  else if(interval == 2.5 || interval == 3){
+    classification += "Quarta"
+  }
+  else if(interval == 3.5 || interval == 4){
+    classification += "Quarta"
+  }
+  else if(interval == 4.5 || interval == 5){
+    classification += "Quinta"
+  }
+  else if(interval == 4.5 || interval == 5){
+    classification += "Quinta"
+  }
+  
+  return {
+    randomTonicNote,
+    randomDegreeNote,
+    interval
+  }  
+}
+
+const trebleClefNotes: {[key:string]: string[]} = {
+  do: [staffImages["-2-linha.png"], staffImages["2-espaco.png"], staffImages["6-linha.png"]],
+  si: [staffImages["-1-espaco.png"], staffImages["3-linha.png"], staffImages["6-espaco.png"]],
+  la: [staffImages["-1-linha.png"], staffImages["3-espaco.png"], staffImages["7-linha.png"]],
+  sol: [staffImages["0-espaco.png"], staffImages["4-linha.png"]],
+  fa: [staffImages["1-linha.png"], staffImages["4-espaco.png"]],
+  mi: [staffImages["1-espaco.png"], staffImages["5-linha.png"]],
+  re: [staffImages["2-linha.png"], staffImages["5-espaco.png"]]
+}
+
+const bassClefNotes: {[key:string]: string[]} = {
+  mi: [staffImages["-2-linha.png"], staffImages["2-espaco.png"], staffImages["6-linha.png"]],
+  re: [staffImages["-1-espaco.png"], staffImages["3-linha.png"], staffImages["6-espaco.png"]],
+  do: [staffImages["-1-linha.png"], staffImages["3-espaco.png"], staffImages["7-linha.png"]],
+  si: [staffImages["0-espaco.png"], staffImages["4-linha.png"]],
+  la: [staffImages["1-linha.png"], staffImages["4-espaco.png"]],
+  sol: [staffImages["1-espaco.png"], staffImages["5-linha.png"]],
+  fa: [staffImages["2-linha.png"], staffImages["5-espaco.png"]]
+}
+
+function getRandomStaffNote(clef: "treble" | "bass" = "treble") {
+  const staffNotes = clef == "treble" ? trebleClefNotes : bassClefNotes
+  const staffNotesNames = Object.keys(staffNotes) 
+  const staffNoteIndex = Math.floor(Math.random() * staffNotesNames.length)
+  const staffNote = staffNotesNames[staffNoteIndex]
+  let staffNoteImagePath = staffNotes[staffNote][Math.floor(Math.random() * staffNote.length)];
+
+  return {
+    staffNote,
+    staffNoteImagePath
+  }
+}
+
 export const api = {
   getMajorScale,
   getMinorScale,
   getRandomScale,
   getMajorHarmonicField,
   getMinorHarmonicField,
-  getRandomHarmonicField
+  getRandomHarmonicField,
+  getRandomInterval,
+  getRandomStaffNote
 }

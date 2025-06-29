@@ -80,6 +80,22 @@ export default function Sidebar({isDrawerOpen, handleDrawer}: SidebarProps){
         key: "circleOfFifthsFourths",
         onClick: () => handleNavigate("/circleOfFifthsFourths"),
       },
+      {
+        label: "Partitura",
+        key: "staff",
+        children: [
+          {
+            label: "Clave de Sol",
+            key: "trebleClef",
+            onClick: () => handleNavigate("/staff/trebleClef")
+          },
+          {
+            label: "Clave de Fá",
+            key: "bassClef",
+            onClick: () => handleNavigate("/staff/bassClef")
+          }
+        ]
+      },
     ];
     
     return (

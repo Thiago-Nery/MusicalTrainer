@@ -7,6 +7,8 @@ import RelativeChords from '../pages/RelativeChords/RelativeChords';
 import CircleOfFifthsFourths from '../pages/CircleOfFifthsFourths/CircleOfFifthsFourths'
 import Triads from '../pages/Formations/Triads/Triads';
 import Tetrads from '../pages/Formations/Tetrads/Tetrads';
+import TrebleClef from '../pages/Staff/TrebleClef/TrebleClef'
+import BassClef from '../pages/Staff/BassClef/BassClef'
 
 export const appRouter = createBrowserRouter([
   {
@@ -44,8 +46,17 @@ export const appRouter = createBrowserRouter([
         element: <CircleOfFifthsFourths/>
       },
       {
-        path: "circleOfFifthsFourths",
-        element: <CircleOfFifthsFourths/>
+        path: "staff",
+        children: [
+          {
+            path: "trebleClef",
+            element: <TrebleClef/>
+          },
+          {
+            path: "bassClef",
+            element: <BassClef/>
+          },
+        ]
       }
     ],
   },
