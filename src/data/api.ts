@@ -6,6 +6,9 @@ import {
   flatNotes,
   flatMajorScales,
   flatMinorScales,
+  noteIntervalsName,
+  intervalNames,
+  intervalInversionQualityNames,
   scalesSemitones,
   scaleOptions,
   scaleTypeOptions,
@@ -13,10 +16,85 @@ import {
 } from './db';
 import { staffImages } from './Staff/staffMappedImages';
 
+function getElementAt(index: number, arr: any[]){
+  let inRangeIndex = index % arr.length
+  return arr[inRangeIndex]
+}
+
+function getNewArrayFromElement(element: any, arr: any[]){
+    const elementIndex = arr.indexOf(element)
+    let newArray = []
+
+    let i
+    for(i=0; i < arr.length; i++){
+      let newElement = getElementAt(elementIndex + i, arr)
+      newArray.push(newElement)
+    }
+
+    return newArray   
+}
+
+function getNewArrayFromIndex(index: number, arr: any[]){
+    let newArray = []
+
+    let i
+    for(i=0; i < arr.length; i++){
+      let newElement = getElementAt(index + i, arr)
+      newArray.push(newElement)
+    }
+
+    return newArray   
+}
+
+
 function getRandomNote(){
   const randomNote = Math.floor(Math.random() * randomNoteOptions.length)
 
   return randomNote
+}
+
+function getRandomInterval(){
+  const flatOrSharpNotes = Math.floor(Math.random() * 2)  == 0 ? flatNotes : sharpNotes;
+  const randomRootNoteIndex = Math.floor(Math.random() * flatOrSharpNotes.length)
+  const randomRootNote = flatOrSharpNotes[randomRootNoteIndex]
+  const sortedNotes = getNewArrayFromIndex(randomRootNoteIndex, flatOrSharpNotes)
+  const randomNoteIndex = Math.floor(Math.random() * (sortedNotes.length - 1)) + 1;
+  const randomNote = sortedNotes[randomNoteIndex]
+  const randomIntervalName = noteIntervalsName[`${randomNoteIndex}`]
+  const regex = new RegExp(`[${Object.keys(intervalNames).join('')}]`, 'g');
+  const randomIntervalNameFormatted = randomIntervalName.replace(regex, l => ` ${intervalNames[l]}`)
+  console.log(randomRootNoteIndex, sortedNotes, randomNoteIndex, randomIntervalNameFormatted)
+  return {
+    randomRootNote,
+    randomNote,
+    randomIntervalNameFormatted
+  }
+}
+
+function getRandomIntervalInversion(){
+  // Segunda <-> Sétima
+  // Terça <-> Sexta
+  // Quarta <-> Quinta
+  // Justo <-> Justo (ex: quarta justa, quinta justa)
+  // Maior <-> Menor
+  // Aumentado <-> Diminuto 
+  const randomIntervalDegree = Math.floor(Math.random() * 6) + 2 
+  const randomIntervalQualityList = Object.keys(intervalNames)
+  const randomIntervalQualityIndex = Math.floor(Math.random() * randomIntervalQualityList.length)
+  const randomIntervalQuality = randomIntervalQualityList[randomIntervalQualityIndex]
+  const randomIntervalQualityFormatted = intervalNames[`${randomIntervalQuality}`]
+
+  const intervalInversionDegree = 9 - randomIntervalDegree
+  const intervalInversionQuality = intervalInversionQualityNames[`${randomIntervalQuality}`]
+  const intervalInversionQualityFormatted = intervalNames[`${intervalInversionQuality}`]
+
+  const randomInterval = `${randomIntervalDegree} ${randomIntervalQualityFormatted}` 
+  const randomIntervalInversion = `${intervalInversionDegree} ${intervalInversionQualityFormatted}`
+
+  return {
+    randomInterval,
+    randomIntervalInversion
+  }
 }
 
 function getScale(note: string, scale: number[]){
@@ -119,70 +197,6 @@ const getMinorScale = (note: string) => getScale(note, scalesSemitones.minor)
 const getMajorHarmonicField = (note: string) => getHarmonicField(getMajorScale(note), harmonicFields.major) 
 const getMinorHarmonicField = (note: string) => getHarmonicField(getMinorScale(note), harmonicFields.minor) 
 
-// Segunda <-> Sétima
-// Terça <-> Sexta
-// Quarta <-> Quinta
-// Justo <-> Justo (ex: quarta justa, quinta justa)
-// Maior <-> Menor
-// Aumentado <-> Diminuto 
-
-function getElementAt(index: number, arr: any[]){
-  let inRangeIndex = index % arr.length
-  return arr[inRangeIndex]
-}
-
-function getNewArrayFromElement(element: any, arr: any[]){
-    const elementIndex = arr.indexOf(element)
-    let newArray = []
-
-    let i
-    for(i=0; i < arr.length; i++){
-      let newElement = getElementAt(elementIndex + i, arr)
-      newArray.push(newElement)
-    }
-
-    return newArray
-    
-}
-
-function getRandomInterval(){
-  const flatOrSharpScale = Math.floor(Math.random() * 2) == 0 ? flatNotes : sharpNotes;
-
-  const randomTonicNote = flatOrSharpScale[0];
-  
-  const randomDegreeNoteIndex = Math.floor(Math.random() * flatOrSharpScale.length) + 1;  
-  const randomDegreeNote = flatOrSharpScale[randomDegreeNoteIndex];
-
-  const interval = randomDegreeNoteIndex / 2
-
-  let classification = ""
-
-  if(interval == 0.5 || interval == 1){
-    classification += "Segunda"
-  }
-  else if(interval == 1.5 || interval == 2){
-    classification += "Terça"
-  }
-  else if(interval == 2.5 || interval == 3){
-    classification += "Quarta"
-  }
-  else if(interval == 3.5 || interval == 4){
-    classification += "Quarta"
-  }
-  else if(interval == 4.5 || interval == 5){
-    classification += "Quinta"
-  }
-  else if(interval == 4.5 || interval == 5){
-    classification += "Quinta"
-  }
-  
-  return {
-    randomTonicNote,
-    randomDegreeNote,
-    interval
-  }  
-}
-
 const trebleClefNotes: {[key:string]: string[]} = {
   do: [staffImages["-2-linha.png"], staffImages["2-espaco.png"], staffImages["6-linha.png"]],
   si: [staffImages["-1-espaco.png"], staffImages["3-linha.png"], staffImages["6-espaco.png"]],
@@ -217,12 +231,13 @@ function getRandomStaffNote(clef: "treble" | "bass" = "treble") {
 }
 
 export const api = {
+  getRandomInterval,
+  getRandomIntervalInversion,
   getMajorScale,
   getMinorScale,
   getRandomScale,
   getMajorHarmonicField,
   getMinorHarmonicField,
   getRandomHarmonicField,
-  getRandomInterval,
   getRandomStaffNote
 }

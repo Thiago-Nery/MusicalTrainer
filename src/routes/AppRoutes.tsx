@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from "../components/layout/MainLayout"
 import NotFound from '../pages/NotFound/NotFound';
+import IntervalClassification from '../pages/Interval/Classification/IntervalClassification';
+import IntervalInversion from '../pages/Interval/Inversion/IntervalInversion';
 import Scales from '../pages/Scales/Scales';
 import HarmonicFields from '../pages/HarmonicFields/HarmonicFields';
 import RelativeChords from '../pages/RelativeChords/RelativeChords';
@@ -16,6 +18,19 @@ export const appRouter = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <NotFound />,
     children: [
+      {
+        path: "intervals",
+        children: [
+          {
+            path: "classification",
+            element: <IntervalClassification/>
+          },
+          {
+            path: "inversion",
+            element: <IntervalInversion/>
+          }
+        ] 
+      },
       {
         path: "scales",
         element: <Scales />
