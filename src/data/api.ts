@@ -9,6 +9,7 @@ import {
   noteIntervalsName,
   intervalNames,
   intervalInversionQualityNames,
+  allowedIntervalInversions,
   scalesSemitones,
   scaleOptions,
   scaleTypeOptions,
@@ -63,7 +64,6 @@ function getRandomInterval(){
   const randomIntervalName = noteIntervalsName[`${randomNoteIndex}`]
   const regex = new RegExp(`[${Object.keys(intervalNames).join('')}]`, 'g');
   const randomIntervalNameFormatted = randomIntervalName.replace(regex, l => ` ${intervalNames[l]}`)
-  console.log(randomRootNoteIndex, sortedNotes, randomNoteIndex, randomIntervalNameFormatted)
   return {
     randomRootNote,
     randomNote,
@@ -72,28 +72,21 @@ function getRandomInterval(){
 }
 
 function getRandomIntervalInversion(){
-  // Segunda <-> Sétima
-  // Terça <-> Sexta
-  // Quarta <-> Quinta
-  // Justo <-> Justo (ex: quarta justa, quinta justa)
-  // Maior <-> Menor
-  // Aumentado <-> Diminuto 
-  const randomIntervalDegree = Math.floor(Math.random() * 6) + 2 
-  const randomIntervalQualityList = Object.keys(intervalNames)
-  const randomIntervalQualityIndex = Math.floor(Math.random() * randomIntervalQualityList.length)
-  const randomIntervalQuality = randomIntervalQualityList[randomIntervalQualityIndex]
-  const randomIntervalQualityFormatted = intervalNames[`${randomIntervalQuality}`]
+  const randomIntervalIndex = Math.floor(Math.random() * allowedIntervalInversions.length)
+  const randomIntervalDegreeAndQuality = allowedIntervalInversions[randomIntervalIndex]
+  const randomIntervalDegree = parseInt(randomIntervalDegreeAndQuality.charAt(0))
+  const randomIntervalQuality = randomIntervalDegreeAndQuality.charAt(1)
 
   const intervalInversionDegree = 9 - randomIntervalDegree
   const intervalInversionQuality = intervalInversionQualityNames[`${randomIntervalQuality}`]
-  const intervalInversionQualityFormatted = intervalNames[`${intervalInversionQuality}`]
 
-  const randomInterval = `${randomIntervalDegree} ${randomIntervalQualityFormatted}` 
-  const randomIntervalInversion = `${intervalInversionDegree} ${intervalInversionQualityFormatted}`
+  const regex = new RegExp(`[${Object.keys(intervalNames).join('')}]`, 'g');
+  const randomIntervalFormatted = randomIntervalDegreeAndQuality.replace(regex, l => ` ${intervalNames[l]}`)
+  const randomIntervalInversionFormatted = `${intervalInversionDegree} ${intervalInversionQuality.replace(regex, l => `${intervalNames[l]}`)}`
 
   return {
-    randomInterval,
-    randomIntervalInversion
+    randomIntervalFormatted,
+    randomIntervalInversionFormatted
   }
 }
 

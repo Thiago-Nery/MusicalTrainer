@@ -6,11 +6,11 @@ import { IntervalInversionService } from "./intervalInversion.service";
 export default function IntervalInversion() {
   const generateQuestion = () => {
     const generatedIntervalInversion = IntervalInversionService.getRandomIntervalInversion();
-    const { randomInterval, randomIntervalInversion } = generatedIntervalInversion;
-    const correctAnswer = [randomIntervalInversion];
+    const { randomIntervalFormatted, randomIntervalInversionFormatted } = generatedIntervalInversion;
+    const correctAnswer = [randomIntervalInversionFormatted];
     console.log(correctAnswer.join(""))
     const generatedQuestion: question = {
-      title: `Qual é a inversão do intervalo ${randomInterval} ?`,
+      title: `Classifique a inversão do intervalo de ${randomIntervalFormatted}`,
       correctAnswer: correctAnswer,
       correctIfIncludes: true
     };

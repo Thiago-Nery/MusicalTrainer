@@ -36,6 +36,8 @@ export const intervalInversionQualityNames : { [key: string]: string } = {
   D: "A"
 }
 
+export const allowedIntervalInversions : string[] = ["2m", "2M", "3m", "3M", "4D", "4J", "5D", "5J", "5A", "6M", "7m", "7M"]
+
 export const scalesSemitones: { [key: string]: number[] } = {
   major: [2, 2, 1, 2, 2, 2, 1],
   minor: [2, 1, 2, 2, 1, 2, 2],
