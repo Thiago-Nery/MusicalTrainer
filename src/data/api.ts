@@ -222,7 +222,7 @@ function getRandomStaffNote(clef: "treble" | "bass" = "treble") {
   const staffNotesNames = Object.keys(staffNotes) 
   const staffNoteIndex = Math.floor(Math.random() * staffNotesNames.length)
   const staffNote = staffNotesNames[staffNoteIndex]
-  let staffNoteImagePath = staffNotes[staffNote][Math.floor(Math.random() * staffNote.length)];
+  let staffNoteImagePath = staffNotes[`${staffNote}`][Math.floor(Math.random() * staffNotes[`${staffNote}`].length)];
 
   return {
     staffNote,

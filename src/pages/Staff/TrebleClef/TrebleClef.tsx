@@ -2,7 +2,7 @@ import Question from "../../../components/Question/Question";
 import question from "../../../components/Question/models/question.model";
 import { trebleClefService } from "./trebleClef.service"
 
-export default function BassClef(){
+export default function TrebleClef(){
   const generateQuestion = () => {
     const {staffNote, staffNoteImagePath} = trebleClefService.getRandomNote()
     const generatedQuestion: question = {
