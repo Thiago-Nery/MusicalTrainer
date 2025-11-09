@@ -1,0 +1,23 @@
+#homepageContainer {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  height: 50vh;
+  margin-top: 5vh;
+}
+
+#homepageDescription {
+  margin-top: 5vh;
+}
+
+.homepageParagraph {
+  font-size: large;
+}
+
+#subjectInvite {
+  color: #1677ff;
+  margin-top: 15vh;
+
+}

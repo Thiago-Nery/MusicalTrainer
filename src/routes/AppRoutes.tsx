@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from "../components/layout/MainLayout"
 import NotFound from '../pages/NotFound/NotFound';
+import Home from '../pages/home/Home';
 import IntervalClassification from '../pages/Interval/Classification/IntervalClassification';
 import IntervalInversion from '../pages/Interval/Inversion/IntervalInversion';
 import Scales from '../pages/Scales/Scales';
@@ -18,6 +19,10 @@ export const appRouter = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <NotFound />,
     children: [
+      {
+        index: true,
+        element: <Home/>
+      },
       {
         path: "intervals",
         children: [
