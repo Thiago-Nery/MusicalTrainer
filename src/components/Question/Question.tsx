@@ -13,6 +13,7 @@ interface QuestionProps {
 export default function QuestionTeste({ generateQuestion }: QuestionProps) {
   const [questionTitle, setQuestionTitle] = useState("")
   const [questionImage, setQuestionImage] = useState("")
+  const [correctIfIncludes, setCorrectIfIncludes] = useState<boolean>(false)
   const [wrongCounter, setWrongCounter] = useState(0);
   const [correctCounter, setCorrectCounter] = useState(0);
   const [questionCounter, setQuestionCounter] = useState(1);
@@ -38,11 +39,14 @@ export default function QuestionTeste({ generateQuestion }: QuestionProps) {
 
   const handleResult = (guess: string) => {
     const formattedGuess = guess.replace(/\s/g, "").toLowerCase();
-    const formattedCorrectAnswer = correctAnswer.join("").toLowerCase()
+    const formattedCorrectAnswer = correctAnswer.join("").replace(/\s/g, "").toLowerCase();
 
-    formattedGuess === formattedCorrectAnswer
-      ? handleCorrectAnswer()
-      : handleWrongAnswer(guess, correctAnswer.join(" "));
+    if ((formattedGuess === formattedCorrectAnswer) || (correctIfIncludes && formattedCorrectAnswer.includes(formattedGuess))){
+      handleCorrectAnswer();
+    }
+    else {
+      handleWrongAnswer(guess, correctAnswer.join(" "));
+    }
 
     setQuestionCounter(questionCounter + 1);
   };
@@ -55,9 +59,8 @@ export default function QuestionTeste({ generateQuestion }: QuestionProps) {
     const generatedQuestion = generateQuestion();
     setQuestionTitle(generatedQuestion.title)
     setCorrectAnswer(generatedQuestion.correctAnswer)
-    if(generatedQuestion.questionImage){
-      setQuestionImage(generatedQuestion.questionImage)
-    }
+    if(generatedQuestion.questionImage) setQuestionImage(generatedQuestion.questionImage)
+    if(generatedQuestion.correctIfIncludes) setCorrectIfIncludes(generatedQuestion.correctIfIncludes)
   }, [questionCounter])
 
   return (
