@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# ℹ️ Sobre o Musical Trainer
+O Musical Trainer nasceu da vontade de ajudar estudantes de música a praticarem teoria de forma simples, envolvente e gratuita. É um espaço feito com dedicação e pensado para quem acredita que aprender música pode (e deve!) ser prazeroso.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🎵 Bem-vindo ao Musical Trainer
 
-Currently, two official plugins are available:
+Aprender teoria musical pode parecer complicado — mas não precisa ser! O Musical Trainer foi criado para tornar o estudo da teoria mais dinâmico, acessível e divertido. Aqui, você encontra uma série de questionários interativos que ajudam a reforçar o que aprendeu, testar seus conhecimentos e acompanhar seu progresso musical.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎶 O que você vai encontrar
 
-## Expanding the ESLint configuration
+O site é organizado em seções temáticas, cada uma voltada a um aspecto essencial da teoria musical:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🎼 Intervalos
 
-- Configure the top-level `parserOptions` property like this:
+* **Classificação:** Classifique intervalos entre notas.
+* **Inversão:** identifique intervalos invertidos.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### 🪗 Escalas
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Explore escalas maiores e menores e modos.
+
+### 🎹 Formações de acordes
+
+* **Tríades:** pratique as formações de acordes em tríades.
+* **Tétrades:** pratique as formações de acordes em tétrades.
+
+### 🎵 Campo harmônico
+
+Entenda como os acordes se relacionam dentro de uma tonalidade e pratique identificar funções harmônicas.
+
+### 🎶 Acordes relativos
+
+Teste seu conhecimento sobre as relações entre acordes maiores e menores relativos.
+
+### 🧭 Círculo de quintas e quartas
+
+Visualize e memorize as relações entre tonalidades de forma prática e musical.
+
+### 🎼 Leitura de partitura
+
+* **Clave de sol:** treine o reconhecimento das notas na clave mais comum.
+* **Clave de fá:** pratique a leitura no registro grave.
+
+## 🚀 Comece agora
+
+Escolha um tema, faça um questionário e veja como a prática constante pode transformar seu domínio da teoria musical.
