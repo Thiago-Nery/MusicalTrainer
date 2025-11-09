@@ -11,7 +11,6 @@ export default function HarmonicFields() {
     const generatedQuestion: question = {
       title: `Qual é o campo harmônico de ${keyNote} ${harmonicFieldType}?`,
       correctAnswer: correctAnswer
-      // TODO: verificar a necessidade de keynote + tipo
     };
 
     return generatedQuestion;

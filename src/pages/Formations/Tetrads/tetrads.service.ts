@@ -9,13 +9,6 @@ const getRandomTetrad = (type?: string) => {
     keyWithType,
     tetrad
   }
-  /* TODO: fazer função de montagem de acorde 
-           exemplo: getChord() -> getMajorChord("C", "triad")
-                                  getMinorChord("C", "tetrad")
-                                  getDiminishedChord("C", "triad")
-                                  getAugmentedChord("C", "triad")
-
-  */
 };
 
 export const TetradsService = {

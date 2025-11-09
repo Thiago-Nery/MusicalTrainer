@@ -8,9 +8,8 @@ export default function IntervalClassification() {
     const generatedInterval = IntervalClassificationService.getRandomInterval();
     const { randomRootNote, randomNote, randomIntervalNameFormatted } = generatedInterval;
     const correctAnswer = [randomIntervalNameFormatted];
-    console.log(correctAnswer.join(""))
     const generatedQuestion: question = {
-      title: `Qual é o intervalo entre as notas ${randomRootNote} e ${randomNote}?`,
+      title: `Classifique o intervalo entre as notas ${randomRootNote} e ${randomNote}`,
       correctAnswer: correctAnswer,
       correctIfIncludes: true
     };
