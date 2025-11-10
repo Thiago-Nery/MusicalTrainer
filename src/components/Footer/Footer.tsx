@@ -2,7 +2,7 @@ import { Popover, Typography } from 'antd';
 import "./Footer.css"
 
 
-const { Paragraph, Link } = Typography;
+const { Paragraph } = Typography;
 
 const content = (
     <div>

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { 
-  allNotes,
   randomNoteOptions,
   sharpNotes,
   flatNotes,
@@ -22,18 +21,18 @@ function getElementAt(index: number, arr: any[]){
   return arr[inRangeIndex]
 }
 
-function getNewArrayFromElement(element: any, arr: any[]){
-    const elementIndex = arr.indexOf(element)
-    let newArray = []
+// function getNewArrayFromElement(element: any, arr: any[]){
+//     const elementIndex = arr.indexOf(element)
+//     let newArray = []
 
-    let i
-    for(i=0; i < arr.length; i++){
-      let newElement = getElementAt(elementIndex + i, arr)
-      newArray.push(newElement)
-    }
+//     let i
+//     for(i=0; i < arr.length; i++){
+//       let newElement = getElementAt(elementIndex + i, arr)
+//       newArray.push(newElement)
+//     }
 
-    return newArray   
-}
+//     return newArray   
+// }
 
 function getNewArrayFromIndex(index: number, arr: any[]){
     let newArray = []
@@ -48,11 +47,11 @@ function getNewArrayFromIndex(index: number, arr: any[]){
 }
 
 
-function getRandomNote(){
-  const randomNote = Math.floor(Math.random() * randomNoteOptions.length)
+// function getRandomNote(){
+//   const randomNote = Math.floor(Math.random() * randomNoteOptions.length)
 
-  return randomNote
-}
+//   return randomNote
+// }
 
 function getRandomInterval(){
   const flatOrSharpNotes = Math.floor(Math.random() * 2)  == 0 ? flatNotes : sharpNotes;
