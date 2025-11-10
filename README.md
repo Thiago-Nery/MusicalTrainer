@@ -1,6 +1,8 @@
 # ℹ️ Sobre o Musical Trainer
 O Musical Trainer nasceu da vontade de ajudar estudantes de música a praticarem teoria de forma simples, envolvente e gratuita. É um espaço feito com dedicação e pensado para quem acredita que aprender música pode (e deve!) ser prazeroso.
 
+Acesse o site clicando [Aqui](https://thiago-nery.github.io/MusicalTrainer)
+
 ## 🎵 Bem-vindo ao Musical Trainer
 
 Aprender teoria musical pode parecer complicado — mas não precisa ser! O Musical Trainer foi criado para tornar o estudo da teoria mais dinâmico, acessível e divertido. Aqui, você encontra uma série de questionários interativos que ajudam a reforçar o que aprendeu, testar seus conhecimentos e acompanhar seu progresso musical.
