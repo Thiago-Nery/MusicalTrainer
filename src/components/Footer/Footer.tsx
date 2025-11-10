@@ -10,9 +10,9 @@ const content = (
         Apaixonado por música e programação, dedicado a transformar código em soluções reais.
       </Paragraph>
       <Paragraph>
-        <Link href="https://github.com/Thiago-Nery">
+        <a href="https://github.com/Thiago-Nery">
           Visite meu Github
-        </Link>
+        </a>
       </Paragraph>
     </div>
 )

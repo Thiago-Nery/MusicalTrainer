@@ -6,7 +6,7 @@ const { Title } = Typography;
 
 export default function NotFound(){
     return (
-        <div style={{padding: 20}}>
+        <div>
             <Title level={2}>🎵 Musical Trainer informa:</Title>
             <Title>Ops! Ainda estamos aprendendo esse assunto...</Title>
             <Title>
