@@ -15,7 +15,7 @@ import BassClef from '../pages/Staff/BassClef/BassClef'
 
 export const appRouter = createBrowserRouter([
   {
-    path: "/",
+    path: "/MusicalTrainer",
     element: <MainLayout />,
     errorElement: <NotFound />,
     children: [
