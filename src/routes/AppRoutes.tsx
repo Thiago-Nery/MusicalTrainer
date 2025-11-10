@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import MainLayout from "../components/layout/MainLayout"
 import NotFound from '../pages/NotFound/NotFound';
 import Home from '../pages/home/Home';
@@ -13,9 +13,9 @@ import Tetrads from '../pages/Formations/Tetrads/Tetrads';
 import TrebleClef from '../pages/Staff/TrebleClef/TrebleClef'
 import BassClef from '../pages/Staff/BassClef/BassClef'
 
-export const appRouter = createBrowserRouter([
+export const appRouter = createHashRouter([
   {
-    path: "/MusicalTrainer",
+    path: "/",
     element: <MainLayout />,
     errorElement: <NotFound />,
     children: [
