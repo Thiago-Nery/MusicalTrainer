@@ -2,14 +2,18 @@ import { Popover, Typography } from 'antd';
 import "./Footer.css"
 
 
-const { Paragraph } = Typography;
+const { Paragraph, Link } = Typography;
 
 const content = (
     <div>
-        infos de curriculo
-        {
-            //TODO: finalizar infos de curriculo
-        }   
+      <Paragraph>
+        Apaixonado por música e programação, dedicado a transformar código em soluções reais.
+      </Paragraph>
+      <Paragraph>
+        <Link href="https://github.com/Thiago-Nery">
+          Visite meu Github
+        </Link>
+      </Paragraph>
     </div>
 )
 
@@ -19,7 +23,7 @@ export default function Footer(){
         <Paragraph className="paragraph">
           Criado por:
           <Popover content={content}>
-            <a> Thiago Nery Fabricio </a>
+            <a href="https://github.com/Thiago-Nery"> Thiago Nery Fabricio </a>
           </Popover>
         </Paragraph>
       </div>
